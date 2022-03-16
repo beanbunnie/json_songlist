@@ -63,7 +63,7 @@
                     "<option value=" + genre + ">" + genre + "</option>"}
             	)
             	document.getElementById("select").innerHTML = selection;
-        }
+        })}
 
 
 
@@ -89,26 +89,25 @@
                     + "Released " + JSON.stringify(data.year) + "<br>";
         }
 
-        serialized_display()
+        serialized_display();
         friendly_display();
         // initialize_form();
     
 	</script>
     </head>
+
     <body>
         <h1> Apply filter:  
+        <br>
+        </h1>
+        <label for="select">Choose a genre:</label>
+        <select name="select" id="select"></select>
+        <button onclick="display_filtered()">Filter</button>
+        <h1> Serialized format: 
             <br>
             </h1>
-            <label for="select">Choose a genre:</label>
-            <select name="select" id="select"></select>
-            <button onclick="display_filtered()">Filter</button>
-            <h1> Serialized format: 
-                <br>
-                </h1>
-                <p id = "serialized"></p>
-                <h1 id = "friendly_title"> User friendly format: 
-                    <br>
-                    </h1>
-                    <p id = "friendly"></p>
-                </body>
-            </html>
+            <p id = "serialized"></p>
+            <h1 id = "friendly_title"> User friendly format: <br> </h1>
+            <p id = "friendly"></p>
+    </body>
+</html>
