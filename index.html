@@ -50,7 +50,7 @@
             initialize_genres(data);
 		})
 		.catch (error => console.log(error))
-        }
+    }
     
 
 
@@ -74,19 +74,33 @@
     }
 
 
-        // function display_filtered () {
-        //     select = document.getElementById('select');
-        //     value = select.options[select.selectedIndex].text;
-        //     string = [];
-        //     for ( i = 0; i < songlist.length; i++) {
-        //         if (songlist[i].genre.includes(value)){
-        //             string += display_single(i);
-        //         }
-        //     }
-        //     document.getElementById("friendly").innerHTML = string;
-        //     document.getElementById("friendly_title").innerHTML = 
-        //         "Filtered friendly display:";
-        // }
+    function filter() {
+		res = 
+		fetch("songlist.json")
+		.then (res => res.text())
+		.then (data => 
+		{
+            data = JSON.parse(data)
+            display_filtered(data);
+		})
+		.catch (error => console.log(error))
+    }
+
+        function display_filtered (data) {
+            select = document.getElementById('select');
+            value = select.options[select.selectedIndex].text;
+            string = [];
+            data.forEach(
+                song => {
+                    if (song.genre.includes(value)){
+                        string += display_single(song);
+                    }
+                }
+            )
+            document.getElementById("friendly").innerHTML = string;
+            document.getElementById("friendly_title").innerHTML = 
+                "Filtered friendly display:";
+        }
 
         function display_single (data) {
             return JSON.stringify(data.title) + "<br>"
@@ -109,7 +123,7 @@
             </h1>
             <label for="select">Choose a genre:</label>
             <select name="select" id="select"></select>
-            <button onclick="display_filtered()">Filter</button>
+            <button onclick="filter()">Filter</button>
             <h1> Serialized format: <br> </h1>
             <p id = "serialized"></p>
             <h1 id = "friendly_title"> User friendly format: <br> </h1>
