@@ -84,7 +84,7 @@
             .then (data => 
             {
                 data = JSON.parse(data)
-                stringified = JSON.stringify(data.songlist);
+                stringified = JSON.stringify(data);
                 alert(stringified);
             })
             .catch (error => console.log(error))
