@@ -39,8 +39,6 @@
         // Intializes the dropdown menu
         // Instead of choosing to hardcode the genres, I thought this would
         // make the code more versatile in case we add more songs
-    total_genres = [];
-	selection = "";
 	function initialize_form () {
         alert(total_genres);
 		res = 
@@ -49,25 +47,29 @@
 		.then (data => 
 		{
 		data = JSON.parse(data)
-		data.forEach(
+        initialize_genres(data);
+		})
+		.catch (error => console.log(error))
+        }
+    
+    total_genres = [];
+	selection = "";
+    function intialize_genres (data) {
+        data.forEach(
 			 song => song.genre.forEach(
                             genre => {
                             if (!total_genres.includes(genre))
-                                total_genres.push(genre);
+                                total_genres.push(JSON.stringify(genre));
                             })
-        )})
-		.catch (error => console.log(error))
-		alert(total_genres);
-        
-		total_genres.forEach(
+        )
+        total_genres.forEach(
             genre => {selection += 
                 "<option value=" + genre + ">" + genre + "</option>"}
         )
         alert(selection);
-            	document.getElementById("select").innerHTML = selection;
-        }
-
-
+	alert(total_genres);
+        document.getElementById("select").innerHTML = selection;
+    }
 
 
         // function display_filtered () {
