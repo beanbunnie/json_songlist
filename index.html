@@ -60,8 +60,8 @@
         data.forEach(
 			 song => song.genre.forEach(
                 genre => {
-                if (!total_genres.includes(genre))
-                    total_genres.push(genre);
+                if (!total_genres.includes(JSON.stringify(genre)))
+                    total_genres.push(JSON.stringify(genre));
                 })
         )
         total_genres.forEach(
@@ -92,9 +92,12 @@
             string = [];
             data.forEach(
                 song => {
-                    if (song.genre.includes(value)){
+                    song.genre.forEach (
+                        genre => {
+                        if (JSON.stringify(genre) == value){
                         string += display_single(song);
-                    }
+                        }}
+                    )
                 }
             )
             document.getElementById("friendly").innerHTML = string;
