@@ -60,13 +60,13 @@
         data.forEach(
 			 song => song.genre.forEach(
                 genre => {
-                if (!total_genres.includes(JSON.stringify(genre)))
-                    total_genres.push(JSON.stringify(genre));
+                if (!total_genres.includes(genre))
+                    total_genres.push(genre);
                 })
         )
         total_genres.forEach(
             genre => {selection += 
-                "<option value=" + JSON.stringify(genre) + ">" + JSON.stringify(genre) + "</option>"}
+                "<option value=" + genre + ">" + genre + "</option>"}
         )
         alert(selection);
 	    alert(total_genres);
@@ -92,12 +92,9 @@
             string = [];
             data.forEach(
                 song => {
-                    song.genre.forEach (
-                        genre => {
-                        if (JSON.stringify(genre) == value){
-                        string += display_single(song);
-                        }}
-                    )
+                    if(song.genre.includes(value)) {
+                        dispaly_single(song);
+                    }
                 }
             )
             document.getElementById("friendly").innerHTML = string;
