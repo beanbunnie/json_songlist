@@ -80,6 +80,7 @@
 
         res = 
             fetch("songlist.json")
+            .then (res => res.text())
             .then (data => 
             {
                 data = JSON.parse(data)
