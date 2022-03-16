@@ -46,15 +46,17 @@
 		.then (res => res.text())
 		.then (data => 
 		{
-		data = JSON.parse(data)
-        initialize_genres(data);
+            data = JSON.parse(data)
+            initialize_genres(data);
 		})
 		.catch (error => console.log(error))
         }
     
+
+
     total_genres = [];
 	selection = "";
-    function intialize_genres (data) {
+    function initialize_genres (data) {
         data.forEach(
 			 song => song.genre.forEach(
                             genre => {
@@ -67,7 +69,7 @@
                 "<option value=" + genre + ">" + genre + "</option>"}
         )
         alert(selection);
-	alert(total_genres);
+	    alert(total_genres);
         document.getElementById("select").innerHTML = selection;
     }
 
@@ -93,9 +95,9 @@
                     + "Released " + JSON.stringify(data.year) + "<br>";
         }
 
+        initialize_form();
         serialized_display();
         friendly_display();
-        initialize_form();
     
 	</script>
     </head>
