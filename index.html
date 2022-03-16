@@ -39,7 +39,7 @@
         // Intializes the dropdown menu
         // Instead of choosing to hardcode the genres, I thought this would
         // make the code more versatile in case we add more songs
-        total_genres = [];
+    total_genres = [];
 	selection = "";
 	function initialize_form () {
 
@@ -58,10 +58,13 @@
         )})
 		.catch (error => console.log(error))
 		
+        
 		total_genres.forEach(
             genre => {selection += 
                 "<option value=" + genre + ">" + genre + "</option>"}
         )
+        alert(total_genres);
+        alert(selection);
             	document.getElementById("select").innerHTML = selection;
         }
 
