@@ -28,10 +28,10 @@
                 .catch (error => console.log(error))
         }
        
-        function display_filtered(data) {
+        function display_all(data) {
         	str = "";
           	data.forEach(elem => str += display_single(elem) + "<br>")
-		document.getElementById("friendly").innerHTML = str;
+		    document.getElementById("friendly").innerHTML = str;
         }
 
 
