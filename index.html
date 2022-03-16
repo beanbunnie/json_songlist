@@ -1,27 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href = "style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
-    <body>
-        <h1> Apply filter:  <br> </h1>
-
-        <label for="select">Choose a genre:</label>
-        <select name="select" id="select">
-        </select> 
-
-         <button onclick="display_filtered()">Filter</button> 
-
-        <h1> Serialized format: <br> </h1>
-        <p id = "serialized"></p>
-
-        <h1 id = "friendly_title"> User friendly format: <br> </h1>
-        <p id = "friendly"></p>
-    </body>
-
-    <script>
+	<head>
+		<link rel="stylesheet" href = "style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script>
         function serialize_display() {
              res = 
                 fetch("songlist.json")
@@ -43,8 +25,10 @@
                     data = JSON.parse(data);
                     str = "";
                     data.forEach( elem =>
-                        str += JSON.stringify(data.title) + <br> + "Artist: " + JSON.stringify(data.artist)
-                            + "Genre: " + JSON.stringify(data.artist) + <br> + "Year: " + JSON.stringify(data.year)
+                        str += JSON.stringify(data.title) + 
+					<br> + "Artist: " + JSON.stringify(data.artist)
+                            + "Genre: " + JSON.stringify(data.artist) + 
+						<br> + "Year: " + JSON.stringify(data.year)
                     )
                     document.getElementById("serialized").innerHTML = JSON.stringify(data.title);
                 })
@@ -71,7 +55,8 @@
             selection = ""
             total_genres.forEach(
                 genre => {selection += 
-                    "<option value=" + genre + ">" + genre + "</option>"}
+                    "
+							<option value=" + genre + ">" + genre + "</option>"}
             )
             document.getElementById("select").innerHTML = selection;
         }
@@ -93,19 +78,41 @@
                 "Filtered friendly display:";
         }
 
-
-
         function display_single (i) {
-            return JSON.stringify(songlist[i].title) + "<br>"
-                    + "Artist: " + JSON.stringify(songlist[i].artist) + "<br>"
-                    + "Genre: " + JSON.stringify(songlist[i].genre) + "<br>"
-                    + "Released " + JSON.stringify(songlist[i].year) + "<br>"
-                    + "<br> <br>";
+            return JSON.stringify(songlist[i].title) + "
+						<br>"
+                    + "Artist: " + JSON.stringify(songlist[i].artist) + "
+							<br>"
+                    + "Genre: " + JSON.stringify(songlist[i].genre) + "
+								<br>"
+                    + "Released " + JSON.stringify(songlist[i].year) + "
+									<br>"
+                    + "
+										<br>
+											<br>";
         }
 
         serialized_display()
         friendly_display();
         // initialize_form();
-    </script>
-</html>
+    
+	</script>
+    </head>
+    <body>
+        <h1> Apply filter:  
+            <br>
+            </h1>
+            <label for="select">Choose a genre:</label>
+            <select name="select" id="select"></select>
+            <button onclick="display_filtered()">Filter</button>
+            <h1> Serialized format: 
+                <br>
+                </h1>
+                <p id = "serialized"></p>
+                <h1 id = "friendly_title"> User friendly format: 
+                    <br>
+                    </h1>
+                    <p id = "friendly"></p>
+                </body>
+            </html>
 
