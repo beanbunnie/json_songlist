@@ -66,7 +66,7 @@
         )
         total_genres.forEach(
             genre => {selection += 
-                "<option value=" + genre + ">" + JSON.stringify(genre) + "</option>"}
+                "<option value=" + JSON.stringify(genre) + ">" + JSON.stringify(genre) + "</option>"}
         )
         alert(selection);
 	    alert(total_genres);
@@ -88,7 +88,7 @@
 
         function display_filtered (data) {
             select = document.getElementById('select');
-            value = select.options[select.selectedIndex].value;
+            value = select.options[select.selectedIndex].text;
             string = [];
             data.forEach(
                 song => {
