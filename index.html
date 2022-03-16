@@ -30,7 +30,9 @@
        
         function display_filtered(data) {
             str = "";
-            data.forEach(elem => display_single(elem))
+		str += display_single(data[0]);
+		document.getElementById("friendly").innerHTML = str;
+//             data.forEach(elem => display_single(elem))
         }
 
 
