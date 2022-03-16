@@ -44,22 +44,13 @@
                     str = "";
                     data.forEach( elem =>
                         str += JSON.stringify(data.title) + <br> + "Artist: " + JSON.stringify(data.artist)
-                            + "Genre: " + JSON.stringify(data.artist) <br> + "Year: " + JSON.stringify(data.year)
+                            + "Genre: " + JSON.stringify(data.artist) + <br> + "Year: " + JSON.stringify(data.year)
                     )
                     document.getElementById("serialized").innerHTML = JSON.stringify(data.title);
                 })
                 .catch (error => console.log(error))
         }
        
-
-        // Creates user friendly display
-        function friendly_display () {
-            friendly = "";
-            for ( i = 0; i < songlist.length; i++) {
-                friendly += display_single(i);
-            }
-            document.getElementById("friendly").innerHTML = friendly;
-        }
 
 
 
