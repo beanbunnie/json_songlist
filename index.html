@@ -22,74 +22,63 @@
                 .then (res => res.text())
                 .then (data => 
                 {
-                    data = JSON.parse(data);
-                    str = "";
-                    data.forEach( elem =>
-                        str += JSON.stringify(data.title) + 
-					<br> + "Artist: " + JSON.stringify(data.artist)
-                            + "Genre: " + JSON.stringify(data.artist) + 
-						<br> + "Year: " + JSON.stringify(data.year)
-                    )
-                    document.getElementById("serialized").innerHTML = JSON.stringify(data.title);
+                    data = JSON.parse(data)
+                    display_filtered(data);
                 })
                 .catch (error => console.log(error))
         }
        
-
+        function display_filtered(data) {
+            str = "";
+            data.forEach(elem => display_single(elem))
+        }
 
 
 
         // Intializes the dropdown menu
         // Instead of choosing to hardcode the genres, I thought this would
         // make the code more versatile in case we add more songs
-        total_genres = [];
-        function initialize_form () {
-            songlist.forEach(
-                song => song.genre.forEach(
-                            genre => {
-                            if (!total_genres.includes(genre))
-                                total_genres.push(genre);
-                            }
-                )    
-            )
-            selection = ""
-            total_genres.forEach(
-                genre => {selection += 
-                    "
-							<option value=" + genre + ">" + genre + "</option>"}
-            )
-            document.getElementById("select").innerHTML = selection;
-        }
+        // total_genres = [];
+        // function initialize_form () {
+        //     songlist.forEach(
+        //         song => song.genre.forEach(
+        //                     genre => {
+        //                     if (!total_genres.includes(genre))
+        //                         total_genres.push(genre);
+        //                     }
+        //         )    
+        //     )
+        //     selection = ""
+        //     total_genres.forEach(
+        //         genre => {selection += 
+        //             "
+		// 					<option value=" + genre + ">" + genre + "</option>"}
+        //     )
+        //     document.getElementById("select").innerHTML = selection;
+        // }
 
 
 
 
-        function display_filtered () {
-            select = document.getElementById('select');
-            value = select.options[select.selectedIndex].text;
-            string = [];
-            for ( i = 0; i < songlist.length; i++) {
-                if (songlist[i].genre.includes(value)){
-                    string += display_single(i);
-                }
-            }
-            document.getElementById("friendly").innerHTML = string;
-            document.getElementById("friendly_title").innerHTML = 
-                "Filtered friendly display:";
-        }
+        // function display_filtered () {
+        //     select = document.getElementById('select');
+        //     value = select.options[select.selectedIndex].text;
+        //     string = [];
+        //     for ( i = 0; i < songlist.length; i++) {
+        //         if (songlist[i].genre.includes(value)){
+        //             string += display_single(i);
+        //         }
+        //     }
+        //     document.getElementById("friendly").innerHTML = string;
+        //     document.getElementById("friendly_title").innerHTML = 
+        //         "Filtered friendly display:";
+        // }
 
-        function display_single (i) {
-            return JSON.stringify(songlist[i].title) + "
-						<br>"
-                    + "Artist: " + JSON.stringify(songlist[i].artist) + "
-							<br>"
-                    + "Genre: " + JSON.stringify(songlist[i].genre) + "
-								<br>"
-                    + "Released " + JSON.stringify(songlist[i].year) + "
-									<br>"
-                    + "
-										<br>
-											<br>";
+        function display_single (data) {
+            return JSON.stringify(data.title) + "<br>"
+                    + "Artist: " + JSON.stringify(data.artist) + "<br>"
+                    + "Genre: " + JSON.stringify(data.genre) + "<br>"
+                    + "Released " + JSON.stringify(data.year) + "<br>";
         }
 
         serialized_display()
@@ -115,4 +104,3 @@
                     <p id = "friendly"></p>
                 </body>
             </html>
-
