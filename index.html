@@ -4,87 +4,73 @@
 		<link rel="stylesheet" href = "style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script>
-        function serialized_display() {
-             res = 
+        process_data();
+
+        total_genres = [];
+	    selection = "";
+
+        /* This function is responsible for interacting between the external
+           JSON file and the program. It parses the JSON data and passes it's
+           content to another function.
+        */
+        function process_data() {
+            res = 
                 fetch("songlist.json")
                 .then (res => res.text())
                 .then (data => 
                 {
                     data = JSON.parse(data)
-                    document.getElementById("serialized").innerHTML = JSON.stringify(data);
+                    display_data(data);
                 })
                 .catch (error => console.log(error))
         }
         
-        function friendly_display() {
-             res = 
-                fetch("songlist.json")
-                .then (res => res.text())
-                .then (data => 
-                {
-                    data = JSON.parse(data)
-                    display_all(data);
-                })
-                .catch (error => console.log(error))
+
+        /* display_data is responsible for displaying the initial page when
+           loaded.
+        */
+        function display_data(data) {
+            document.getElementById("serialized").innerHTML = JSON.stringify(data);
+            friendly(data);
+            initialize_genres(data);
+
         }
-       
-        function display_all(data) {
+
+        // friendly displays all JSON data in a user-friendly manner.
+        function friendly(data) {
         	str = "";
           	data.forEach(elem => str += display_single(elem) + "<br>")
 		    document.getElementById("friendly").innerHTML = str;
+        }    
+
+
+        function initialize_genres (data) {
+            data.forEach(
+                song => song.genre.forEach(
+                    genre => {
+                    if (!total_genres.includes(genre))
+                        total_genres.push(genre);
+                    })
+            )
+            total_genres.forEach(
+                genre => {selection += 
+                    "<option value=" + genre + ">" + genre + "</option>"}
+            )
+            document.getElementById("select").innerHTML = selection;
         }
 
 
-
-        // Intializes the dropdown menu
-        // Instead of choosing to hardcode the genres, I thought this would
-        // make the code more versatile in case we add more songs
-	function initialize_form () {
-        alert(total_genres);
-		res = 
-		fetch("songlist.json")
-		.then (res => res.text())
-		.then (data => 
-		{
-            data = JSON.parse(data)
-            initialize_genres(data);
-		})
-		.catch (error => console.log(error))
-    }
-    
-
-
-    total_genres = [];
-	selection = "";
-    function initialize_genres (data) {
-        data.forEach(
-			 song => song.genre.forEach(
-                genre => {
-                if (!total_genres.includes(genre))
-                    total_genres.push(genre);
-                })
-        )
-        total_genres.forEach(
-            genre => {selection += 
-                "<option value=" + genre + ">" + genre + "</option>"}
-        )
-        alert(selection);
-	    alert(total_genres);
-        document.getElementById("select").innerHTML = selection;
-    }
-
-
-    function filter() {
-		res = 
-		fetch("songlist.json")
-		.then (res => res.text())
-		.then (data => 
-		{
-            data = JSON.parse(data)
-            display_filtered(data);
-		})
-		.catch (error => console.log(error))
-    }
+        function filter() {
+            res = 
+            fetch("songlist.json")
+            .then (res => res.text())
+            .then (data => 
+            {
+                data = JSON.parse(data)
+                display_filtered(data);
+            })
+            .catch (error => console.log(error))
+        }
 
         function display_filtered (data) {
             select = document.getElementById('select');
@@ -108,10 +94,6 @@
                     + "Genre: " + JSON.stringify(data.genre) + "<br>"
                     + "Released " + JSON.stringify(data.year) + "<br>";
         }
-
-        initialize_form();
-        serialized_display();
-        friendly_display();
     
 	</script>
     </head>
