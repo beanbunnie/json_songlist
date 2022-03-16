@@ -42,7 +42,7 @@
     total_genres = [];
 	selection = "";
 	function initialize_form () {
-
+        alert(total_genres);
 		res = 
 		fetch("songlist.json")
 		.then (res => res.text())
@@ -57,13 +57,12 @@
                             })
         )})
 		.catch (error => console.log(error))
-		
+		alert(total_genres);
         
 		total_genres.forEach(
             genre => {selection += 
                 "<option value=" + genre + ">" + genre + "</option>"}
         )
-        alert(total_genres);
         alert(selection);
             	document.getElementById("select").innerHTML = selection;
         }
