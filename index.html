@@ -75,11 +75,13 @@
         function display_filtered (data) {
             select = document.getElementById('select');
             value = select.options[select.selectedIndex].value;
-            alert(value);
+            alert("Value is: " + value);
             string = [];
             data.forEach(
                 song => {
+                    alert("Genres are: " + song.genre);
                     if(song.genre.includes(value)) {
+                        alert("This " + song.name + "is of the corret genre.");
                         display_single(song);
                     }
                 }
