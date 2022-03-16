@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href = "style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <h1> Apply filter:  <br> </h1>
+
+        <label for="select">Choose a genre:</label>
+        <select name="select" id="select">
+        </select> 
+
+         <button onclick="display_filtered()">Filter</button> 
+
+        <h1> Serialized format: <br> </h1>
+        <p id = "serialized"></p>
+
+        <h1 id = "friendly_title"> User friendly format: <br> </h1>
+        <p id = "friendly"></p>
+    </body>
+
+    <script>
+        /*
+        let songlist = 
+        [
+            {"artist": "Yuna",
+            "title": "Crush",
+            "genre": ["RnB"],
+            "year":2016,
+            },
+            {"artist": "Kali Uchis",
+            "title": "Your Teeth in My Neck",
+            "genre":["RnB", "Soul"],
+            "year":2018,
+            },
+            {"artist": "Trindad Cardona",
+            "title": "Dinero",
+            "genre":["Latin Urbano"],
+            "year":2021,
+            },
+            {"artist":"Eric B. and Rakim",
+            "title": "Don't Sweat the Technique",
+            "genre":["Hip Hop"],
+            "year":1992,
+            },
+            {"artist":"The Apples",
+            "title": "Killing",
+            "genre": ["RnB", "Soul"],
+            "year":2008,
+            },
+            {"artist":"Glass Animals",
+            "title": "Every Other Freckle",
+            "genre": ["Indie Rock"],
+            "year":2014,
+            },
+            {"artist":"Tyler the Creator",
+            "title": "2SEATER",
+            "genre": ["Rap"],
+            "year":2015,
+            },
+            {"artist":"Migos",
+            "title": "Bad and Boujee",
+            "genre": ["Rap"],
+            "year":2016,
+            },
+            {"artist":"Smashmouth",
+            "title": "All Star",
+            "genre": ["Alternative Rock"],
+            "year":1999,
+            },
+            {"artist":"John Coltraine",
+            "title": "Too Young to Go Steady",
+            "genre":["Jazz"],
+            "year":1962,
+            },
+        ]; */
+
+
+        res = 
+            fetch("file:///C:/Users/maggi/comp20/hw9/songlist.json")
+            .then (data => 
+            {
+                data = JSON.parse(data)
+                stringified = JSON.stringify(data.songlist);
+                alert(stringified);
+            })
+            .catch (error => console.log(error))
+
+
+        // function serialized_display() {
+        //     $.get( "songlist.json", 
+        //     function( songlist ) {
+        //     serialized = "";
+        //         for (i = 0; i < songlist.length; i++) {
+        //             serialized += JSON.stringify(songlist[i]);
+        //         }
+        //         document.getElementById("serialized").innerHTML = serialized;
+        //     })
+        // }
+        
+
+        // Creates serialized display
+        // function serialized_display() {
+        //     let serialized = "";
+        //     for (i = 0; i < songlist.length; i++) {
+        //         serialized += JSON.stringify(songlist[i]);
+        //     }
+        //     document.getElementById("serialized").innerHTML = serialized;
+        // }
+
+        
+        
+        // Creates user friendly display
+        function friendly_display () {
+            friendly = "";
+            for ( i = 0; i < songlist.length; i++) {
+                friendly += display_single(i);
+            }
+            document.getElementById("friendly").innerHTML = friendly;
+        }
+
+
+
+
+        // Intializes the dropdown menu
+        // Instead of choosing to hardcode the genres, I thought this would
+        // make the code more versatile in case we add more songs
+        total_genres = [];
+        function initialize_form () {
+            songlist.forEach(
+                song => song.genre.forEach(
+                            genre => {
+                            if (!total_genres.includes(genre))
+                                total_genres.push(genre);
+                            }
+                )    
+            )
+            selection = ""
+            total_genres.forEach(
+                genre => {selection += 
+                    "<option value=" + genre + ">" + genre + "</option>"}
+            )
+            document.getElementById("select").innerHTML = selection;
+        }
+
+
+
+
+        function display_filtered () {
+            select = document.getElementById('select');
+            value = select.options[select.selectedIndex].text;
+            string = [];
+            for ( i = 0; i < songlist.length; i++) {
+                if (songlist[i].genre.includes(value)){
+                    string += display_single(i);
+                }
+            }
+            document.getElementById("friendly").innerHTML = string;
+            document.getElementById("friendly_title").innerHTML = 
+                "Filtered friendly display:";
+        }
+
+
+
+        function display_single (i) {
+            return JSON.stringify(songlist[i].title) + "<br>"
+                    + "Artist: " + JSON.stringify(songlist[i].artist) + "<br>"
+                    + "Genre: " + JSON.stringify(songlist[i].genre) + "<br>"
+                    + "Released " + JSON.stringify(songlist[i].year) + "<br>"
+                    + "<br> <br>";
+        }
+
+        // serialized_display()
+        // friendly_display();
+        // initialize_form();
+    </script>
+</html>
+

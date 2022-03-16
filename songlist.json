@@ -1,86 +1,55 @@
-{
-  "songs": [
-    {
-      "artist": "Yuna",
-      "title": "Crush",
-      "genre": [
-        "RnB"
-      ],
-      "year": 2016
-    },
-    {
-      "artist": "Kali Uchis",
-      "title": "Your Teeth in My Neck",
-      "genre": [
-        "RnB",
-        "Soul"
-      ],
-      "year": 2018
-    },
-    {
-      "artist": "Trindad Cardona",
-      "title": "Dinero",
-      "genre": [
-        "Latin Urbano"
-      ],
-      "year": 2021
-    },
-    {
-      "artist": "Eric B. and Rakim",
-      "title": "Don't Sweat the Technique",
-      "genre": [
-        "Hip Hop"
-      ],
-      "year": 1992
-    },
-    {
-      "artist": "The Apples",
-      "title": "Killing",
-      "genre": [
-        "RnB",
-        "Soul"
-      ],
-      "year": 2008
-    },
-    {
-      "artist": "Glass Animals",
-      "title": "Every Other Freckle",
-      "genre": [
-        "Indie Rock"
-      ],
-      "year": 2014
-    },
-    {
-      "artist": "Tyler the Creator",
-      "title": "2SEATER",
-      "genre": [
-        "Rap"
-      ],
-      "year": 2015
-    },
-    {
-      "artist": "Migos",
-      "title": "Bad and Boujee",
-      "genre": [
-        "Rap"
-      ],
-      "year": 2016
-    },
-    {
-      "artist": "Smashmouth",
-      "title": "All Star",
-      "genre": [
-        "Alternative Rock"
-      ],
-      "year": 1999
-    },
-    {
-      "artist": "John Coltraine",
-      "title": "Too Young to Go Steady",
-      "genre": [
-        "Jazz"
-      ],
-      "year": 1962
+    
+{ "songlist" :
+        [
+            {"artist": "Yuna",
+            "title": "Crush",
+            "genre": ["RnB"],
+            "year":2016
+            },
+            {"artist": "Kali Uchis",
+            "title": "Your Teeth in My Neck",
+            "genre":["RnB", "Soul"],
+            "year":2018
+            },
+            {"artist": "Trindad Cardona",
+            "title": "Dinero",
+            "genre":["Latin Urbano"],
+            "year":2021
+            },
+            {"artist":"Eric B. and Rakim",
+            "title": "Don't Sweat the Technique",
+            "genre":["Hip Hop"],
+            "year":1992
+            },
+            {"artist":"The Apples",
+            "title": "Killing",
+            "genre": ["RnB", "Soul"],
+            "year":2008
+            },
+            {"artist":"Glass Animals",
+            "title": "Every Other Freckle",
+            "genre": ["Indie Rock"],
+            "year":2014
+            },
+            {"artist":"Tyler the Creator",
+            "title": "2SEATER",
+            "genre": ["Rap"],
+            "year":2015
+            },
+            {"artist":"Migos",
+            "title": "Bad and Boujee",
+            "genre": ["Rap"],
+            "year":2016
+            },
+            {"artist":"Smashmouth",
+            "title": "All Star",
+            "genre": ["Alternative Rock"],
+            "year":1999
+            },
+            {"artist":"John Coltraine",
+            "title": "Too Young to Go Steady",
+            "genre":["Jazz"],
+            "year":1962
+            }
+        ]
     }
-  ]
-}
