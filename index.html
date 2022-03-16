@@ -29,10 +29,11 @@
         }
        
         function display_filtered(data) {
-            str = "";
-		str += display_single(data[0]);
+        	str = "";
+		
+		
+          	data.forEach(elem => str += display_single(elem))
 		document.getElementById("friendly").innerHTML = str;
-//             data.forEach(elem => display_single(elem))
         }
 
 
