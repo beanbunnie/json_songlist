@@ -43,7 +43,7 @@
 		    document.getElementById("friendly").innerHTML = str;
         }    
 
-
+        //initializes the dropdown list
         function initialize_genres (data) {
             data.forEach(
                 song => song.genre.forEach(
@@ -60,6 +60,8 @@
         }
 
 
+
+        //called when filtering by a genre
         function filter() {
             res = 
             fetch("songlist.json")
@@ -72,16 +74,18 @@
             .catch (error => console.log(error))
         }
 
+
+        //displasy filtered objects
         function display_filtered (data) {
             select = document.getElementById('select');
             value = select.options[select.selectedIndex].value;
-            alert("Value is: " + value);
+            // alert("Value is: " + value);
             string = "";
             data.forEach(
                 song => {
-                    alert("Genres are: " + song.genre);
+                    // alert("Genres are: " + song.genre);
                     if(song.genre.includes(value)) {
-                        alert("This " + song.name + "is of the corret genre.");
+                        // alert("This " + song.name + "is of the corret genre.");
                         string += display_single(song);
                     }
                 }
@@ -91,6 +95,7 @@
                 "Filtered friendly display:";
         }
 
+        //returns the html text for a single song
         function display_single (data) {
             return JSON.stringify(data.title) + "<br>"
                     + "Artist: " + JSON.stringify(data.artist) + "<br>"
