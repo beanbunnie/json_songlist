@@ -55,15 +55,15 @@
                             if (!total_genres.includes(genre))
                                 total_genres.push(genre);
                             })
-		)
+        )})
 		.catch (error => console.log(error))
 		
 		total_genres.forEach(
-                genre => {selection += 
-                    "<option value=" + genre + ">" + genre + "</option>"}
-            	)
+            genre => {selection += 
+                "<option value=" + genre + ">" + genre + "</option>"}
+        )
             	document.getElementById("select").innerHTML = selection;
-        })}
+        }
 
 
 
@@ -97,17 +97,17 @@
     </head>
 
     <body>
-        <h1> Apply filter:  
-        <br>
-        </h1>
-        <label for="select">Choose a genre:</label>
-        <select name="select" id="select"></select>
-        <button onclick="display_filtered()">Filter</button>
-        <h1> Serialized format: 
+        <div class = "main_box">
+            <h1> Apply filter:  
             <br>
             </h1>
+            <label for="select">Choose a genre:</label>
+            <select name="select" id="select"></select>
+            <button onclick="display_filtered()">Filter</button>
+            <h1> Serialized format: <br> </h1>
             <p id = "serialized"></p>
             <h1 id = "friendly_title"> User friendly format: <br> </h1>
             <p id = "friendly"></p>
+        </div>
     </body>
 </html>
