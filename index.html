@@ -59,14 +59,14 @@
     function initialize_genres (data) {
         data.forEach(
 			 song => song.genre.forEach(
-                            genre => {
-                            if (!total_genres.includes(genre))
-                                total_genres.push(JSON.stringify(genre));
-                            })
+                genre => {
+                if (!total_genres.includes(genre))
+                    total_genres.push(genre);
+                })
         )
         total_genres.forEach(
             genre => {selection += 
-                "<option value=" + genre + ">" + genre + "</option>"}
+                "<option value=" + genre + ">" + JSON.stringify(genre) + "</option>"}
         )
         alert(selection);
 	    alert(total_genres);
@@ -88,7 +88,7 @@
 
         function display_filtered (data) {
             select = document.getElementById('select');
-            value = select.options[select.selectedIndex].text;
+            value = select.options[select.selectedIndex].value;
             string = [];
             data.forEach(
                 song => {
