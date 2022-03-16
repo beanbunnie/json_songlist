@@ -74,7 +74,8 @@
 
         function display_filtered (data) {
             select = document.getElementById('select');
-            value = select.options[select.selectedIndex].text;
+            value = select.options[select.selectedIndex].value;
+            alert(value);
             string = [];
             data.forEach(
                 song => {
@@ -100,16 +101,18 @@
 
     <body>
         <div class = "main_box">
-            <h1> Apply filter:  
-            <br>
-            </h1>
-            <label for="select">Choose a genre:</label>
-            <select name="select" id="select"></select>
-            <button onclick="filter()">Filter</button>
-            <h1> Serialized format: <br> </h1>
-            <p id = "serialized"></p>
-            <h1 id = "friendly_title"> User friendly format: <br> </h1>
-            <p id = "friendly"></p>
+            <div class = "sub_box">
+                <h1> Apply filter:  
+                <br>
+                </h1>
+                <label for="select">Choose a genre:</label>
+                <select name="select" id="select"></select>
+                <button onclick="filter()">Filter</button>
+                <h1> Serialized format: <br> </h1>
+                <p id = "serialized"></p>
+                <h1 id = "friendly_title"> User friendly format: <br> </h1>
+                <p id = "friendly"></p>
+            </div>
         </div>
     </body>
 </html>
