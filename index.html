@@ -22,97 +22,36 @@
     </body>
 
     <script>
-        /*
-        let songlist = 
-        [
-            {"artist": "Yuna",
-            "title": "Crush",
-            "genre": ["RnB"],
-            "year":2016,
-            },
-            {"artist": "Kali Uchis",
-            "title": "Your Teeth in My Neck",
-            "genre":["RnB", "Soul"],
-            "year":2018,
-            },
-            {"artist": "Trindad Cardona",
-            "title": "Dinero",
-            "genre":["Latin Urbano"],
-            "year":2021,
-            },
-            {"artist":"Eric B. and Rakim",
-            "title": "Don't Sweat the Technique",
-            "genre":["Hip Hop"],
-            "year":1992,
-            },
-            {"artist":"The Apples",
-            "title": "Killing",
-            "genre": ["RnB", "Soul"],
-            "year":2008,
-            },
-            {"artist":"Glass Animals",
-            "title": "Every Other Freckle",
-            "genre": ["Indie Rock"],
-            "year":2014,
-            },
-            {"artist":"Tyler the Creator",
-            "title": "2SEATER",
-            "genre": ["Rap"],
-            "year":2015,
-            },
-            {"artist":"Migos",
-            "title": "Bad and Boujee",
-            "genre": ["Rap"],
-            "year":2016,
-            },
-            {"artist":"Smashmouth",
-            "title": "All Star",
-            "genre": ["Alternative Rock"],
-            "year":1999,
-            },
-            {"artist":"John Coltraine",
-            "title": "Too Young to Go Steady",
-            "genre":["Jazz"],
-            "year":1962,
-            },
-        ]; */
-
-
-        res = 
-            fetch("songlist.json")
-            .then (res => res.text())
-            .then (data => 
-            {
-                data = JSON.parse(data)
-                stringified = JSON.stringify(data);
-                alert(stringified);
-            })
-            .catch (error => console.log(error))
-
-
-        // function serialized_display() {
-        //     $.get( "songlist.json", 
-        //     function( songlist ) {
-        //     serialized = "";
-        //         for (i = 0; i < songlist.length; i++) {
-        //             serialized += JSON.stringify(songlist[i]);
-        //         }
-        //         document.getElementById("serialized").innerHTML = serialized;
-        //     })
-        // }
+        function serialize_display() {
+             res = 
+                fetch("songlist.json")
+                .then (res => res.text())
+                .then (data => 
+                {
+                    data = JSON.parse(data)
+                    document.getElementById("serialized").innerHTML = JSON.stringify(data);
+                })
+                .catch (error => console.log(error))
+        }
         
+        function friendly_display() {
+             res = 
+                fetch("songlist.json")
+                .then (res => res.text())
+                .then (data => 
+                {
+                    data = JSON.parse(data);
+                    str = "";
+                    data.forEach( elem =>
+                        str += JSON.stringify(data.title) + <br> + "Artist: " + JSON.stringify(data.artist)
+                            + "Genre: " + JSON.stringify(data.artist) <br> + "Year: " + JSON.stringify(data.year)
+                    )
+                    document.getElementById("serialized").innerHTML = JSON.stringify(data.title);
+                })
+                .catch (error => console.log(error))
+        }
+       
 
-        // Creates serialized display
-        // function serialized_display() {
-        //     let serialized = "";
-        //     for (i = 0; i < songlist.length; i++) {
-        //         serialized += JSON.stringify(songlist[i]);
-        //     }
-        //     document.getElementById("serialized").innerHTML = serialized;
-        // }
-
-        
-        
         // Creates user friendly display
         function friendly_display () {
             friendly = "";
